@@ -28,14 +28,14 @@
         }, {
             title: "Teams",
             description: "Microsoft Teams",
-            url: "https://www.google.com",
+            url: "https://teams.microsoft.com",
             auth: true,
             group: "group2",
             icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABhWlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV/TSlUqHeyg4pChOrUgKuIoVSyChdJWaNXB5NIvaNKQpLg4Cq4FBz8Wqw4uzro6uAqC4AeIo5OToouU+L+m0CLGg+N+vLv3uHsHCI0KU03fBKBqlpGKx8RsblX0v8KHPgQxjIjETD2RXszAdXzdw8PXuyjPcj/35xhQ8iYDPCLxHNMNi3iDeGbT0jnvE4dYSVKIz4kjBl2Q+JHrssNvnIstFnhmyMik5olDxGKxi+UuZiVDJZ4mDiuqRvlC1mGF8xZntVJj7XvyFwby2kqa6zRHEccSEkhChIwayqjAQpRWjRQTKdqPufhHWv4kuWRylcHIsYAqVEgtP/gf/O7WLExNOkmBGNDzYtsfY4B/F2jWbfv72LabJ4D3GbjSOv5qA5j9JL3e0cJHQHAbuLjuaPIecLkDDD3pkiG1JC9NoVAA3s/om3LA4C3Qv+b01t7H6QOQoa6Wb4CDQ2C8SNnrLu/u7e7t3zPt/n4AgV9yrW4zRm4AAAAGYktHRACAAIAAgEQok00AAAAJcEhZcwAALiMAAC4jAXilP3YAAAAHdElNRQfmBAkPHyh38losAAAAGXRFWHRDb21tZW50AENyZWF0ZWQgd2l0aCBHSU1QV4EOFwAAAoRJREFUSMfVlc9LVFEUx8+977150qRUGkRJURRGvhe2y38gAlu58Nf8UkqycNEiiFq6CsRFIFq4yGaeDkoERUStzHCRLYQ2hatahznKNDHvxz3fFuaPbIYZmnHRd3nvPfd77z2fc66gMnVz4IXu+X6j67sWM2wp9HQq1fm1VJy+e2Bw4KV0fa/BDVxbMdsAmkFkrWbXmwAc3FxnaHKOiEobxBLp88x8EYAFoubv2cw5AEdA1ZHu+f4wEV2iPZJeSXA0Ph1RilsMXX+afNK1WGiNrGB/4QfBJINve4H/Lh5PX9icSCRmmhK9M2cqNdgSgBCDrxARRWJTI3nf/Zz33OVIbGqo0BMpTUoPoAwIGSlEFqAMgFMgNBXzEEIuJHpnG/Ne/hYRCSIipdTd3QbBodr6oxDuii5NGh1r24KpO+IMA38a6Jo2xIwWXdNmUsnuub6+2QZBwgfB3HhE4YrOnuSbHRSxrmnDzJAhQ38drql5u57LPVbM9URkAzi+XQdGa13YXNw8LRHR2MN2jsan+wOlRn7vNbj7BjJQ6g4REYO/AZhn5nYA+wslee3HzxVskyh6os5hJ9kzMdD/ahIk8WjiclARpoq5bifqpm4ei8Sce9n8Km0k3KmsDgrQdCBQfLVadVCW/n+DojkIAk6s5XItIDL/+fRCfilqwGCLQFbZjUkISCldDXIZoHUhaMk0QverRpEgsVC7L/xpdLzjbNXatSZlmgTVCoiPZsh8MDrehmr+B5h2ovGSedCknJdSLgkhsntB0VajunH9uen63gkv8G1mWESwALJAOAngL5IMzWh1Ut3vyzYopv5rz8J+4J8OlLIZbIPIIqBZl0ZHKtX1oVT8LyaZLG4rF+v1AAAAAElFTkSuQmCC"
         }, {
             title: "Zoom!",
             description: "A pandemic favorite",
-            url: "https://www.google.com",
+            url: "https://www.zoom.us",
             auth: true,
             group: "group2"
         }, ],
@@ -395,7 +395,13 @@
                         element.style = `background-image:var(--icon-links);`;
                         break
                     case "favicon":
-                        element.style = `background-image:url(${link.url}/favicon.ico);`;
+                        if ((link.url).startsWith("http")) {
+                            let index = (link.url).indexOf("/", 8);
+                            if (index == -1) {
+                                index = (link.url).length;
+                            }
+                            element.style = `background-image:url(${ (link.url).substr(0, index) }/favicon.ico);`;
+                        }
                         break;
                     default:
                         element.style = `background-image:url(${link.icon});`;
