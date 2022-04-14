@@ -421,6 +421,8 @@
                 nodeSearchBar.value = "";
                 nodeSearchBar.focus();
                 ShowData(config);
+            } else if (document.activeElement.id != "searchbar") {
+                document.getElementById("searchbar").focus();
             }
         }
     </script>
