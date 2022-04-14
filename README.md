@@ -55,3 +55,16 @@ Groups allow the links to be grouped together in the same section.
 - sort: [asc|desc|false] Defines how the *links* and *groups* will be sorted.
 
 
+### **base64_images**
+
+Allows storing images/icons encoded in base64, so they can be shared as icons in different links and or as backgrounds.
+
+```json
+{
+        "base64_images": {
+            "star": "data:image/png;base64,iVBORw0KGgoA(...)"
+        }
+}
+```
+
+Which then can be used as an *image* or *icon* property of one or more links.
