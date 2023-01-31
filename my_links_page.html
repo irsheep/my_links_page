@@ -225,6 +225,10 @@
             border-radius: var(--border-radius);
         }
         
+        .fgi {
+            margin-top: 70px;
+        }
+        
         .auth {
             background-image: var(--icon-auth);
             background-position-x: 246px;
@@ -319,9 +323,11 @@
             const nodeDiv = document.createElement("div");
             const nodeLinks = document.getElementById("links");
 
+            let isFirstGroup = true;
+
             nodeDiv.id = "links";
             data.groups.map((group) => {
-                nodeDiv.appendChild(AddTitle(group.title));
+                nodeDiv.appendChild(AddTitle(group.title, isFirstGroup));
 
                 const nodeUl = document.createElement("ul");
                 nodeUl.className = layout;
@@ -345,13 +351,17 @@
 
                 });
                 nodeDiv.appendChild(nodeUl);
+                isFirstGroup = false;
             });
             nodeMain.replaceChild(nodeDiv, nodeLinks);
         }
 
-        function AddTitle(title) {
+        function AddTitle(title, isFirstGroup) {
             const nodeP = document.createElement("p");
             const nodePText = document.createTextNode(title);
+            if (isFirstGroup) {
+                nodeP.classList.add("fgi");
+            }
             nodeP.appendChild(nodePText);
             return nodeP;
         }
