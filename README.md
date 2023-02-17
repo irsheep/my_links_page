@@ -35,7 +35,7 @@ In the **links** section you can add
 - icon: [default|favicon|url] What icon should be associated with the links. 
 - image: A url to an image to show as the background of the link.
 
-The *icon* and *image* options the *url* can be a URL to an image or a base64 string representation of the image (data:image/png;base64, ...).
+The *icon* and *image* options the *url* can be a URL to an image, a base64 string representation of the image (data:image/png;base64, ...) or inline SVG string.
 
 > Take care when using images from sites on the internet, depending on the number of links with images and icons, can cause **My Links Page** to download a large number of images.
 
@@ -55,13 +55,14 @@ Groups allow the links to be grouped together in the same section.
 - sort: [asc|desc|false] Defines how the *links* and *groups* will be sorted.
 
 
-### **base64_images**
+### **css_images**
 
 Allows storing images/icons encoded in base64, so they can be shared as icons in different links and or as backgrounds.
 
 ```json
 {
-        "base64_images": {
+        "css_images": {
+            "google": "data:image/svg+xml;charset=UTF-8(...)",
             "star": "data:image/png;base64,iVBORw0KGgoA(...)"
         }
 }
